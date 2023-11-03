@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom';
+
 export const MovieDetails = ({ details }) => {
   const { poster_path, title, release_date, vote_average, overview, genres } =
     details;
-  console.log(genres);
-  console.log(typeof release_date);
 
   const year = release_date ? release_date.slice(0, 4) : null;
   const userScore = Math.round(vote_average * 10);
@@ -11,8 +11,11 @@ export const MovieDetails = ({ details }) => {
     : null;
   return (
     <div>
+      <Link to="/">Go back</Link>
       <img
-        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+        src={
+          poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : null
+        }
         alt={title}
         width="200"
       />

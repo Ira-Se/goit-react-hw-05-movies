@@ -2,24 +2,39 @@ import { fetchCast } from 'components/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Cast = () => {
+export const Cast = () => {
   const params = useParams();
   const [castInfo, setCastInfo] = useState([]);
-
-  console.log(params);
 
   useEffect(() => {
     async function getCast() {
       try {
-        setCastInfo(await fetchCast(params.moviedId));
+        setCastInfo(await fetchCast(params.movieId));
       } catch (error) {
         console.log(error);
       }
     }
     getCast();
-  }, [params.moviedId]);
+  }, [params.movieId]);
 
-  return <div>{castInfo}</div>;
+  return (
+    <ul>
+      {castInfo &&
+        castInfo.map(actor => (
+          <li key={actor.id}>
+            <img
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                  : null
+              }
+              alt={actor.name}
+              width="100"
+            />
+            <div>{actor.name}</div>
+            <div> Character: {actor.character}</div>
+          </li>
+        ))}
+    </ul>
+  );
 };
-
-export default Cast;

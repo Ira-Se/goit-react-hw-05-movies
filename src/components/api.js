@@ -8,7 +8,6 @@ const params = new URLSearchParams({
 
 export const fetchTrendingMovies = async () => {
   const response = await axios.get(`/trending/movie/day?${params}`);
-  console.log(response.data.results);
   return response.data.results;
 };
 
@@ -20,4 +19,14 @@ export const fetchMovieById = async movieId => {
 export const fetchCast = async movieId => {
   const response = await axios.get(`/movie/${movieId}/credits?${params}`);
   return response.data.cast;
+};
+
+export const fetchReviews = async movieId => {
+  const response = await axios.get(`/movie/${movieId}/reviews?${params}`);
+  return response.data.results;
+};
+
+export const fetchSearchMovies = async query => {
+  const response = await axios.get(`/search/movie?query=${query}&${params}`);
+  return response.data.results;
 };

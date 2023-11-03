@@ -20,7 +20,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <MovieList trendList={trendList} />
+      <MovieList currentList={trendList} />
     </div>
   );
 }
