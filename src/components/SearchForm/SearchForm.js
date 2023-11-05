@@ -1,8 +1,12 @@
+import { Form, Input, Button } from './SearchForm.styled';
+
 export const SearchForm = ({ handleSubmit, handleChange }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" onChange={handleChange} />
-      <button>Search</button>
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <Input type="text" onChange={handleChange} />
+      <Button>Search</Button>
+    </Form>
   );
 };
+
+export default SearchForm;
