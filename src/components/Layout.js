@@ -1,5 +1,12 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import Loader from './Loader/Loader';
+
+export const Container = styled.div`
+  background-color: black;
+  padding: 30px;
+`;
 
 export const StyledNavLink = styled(NavLink)`
   padding: 10px;
@@ -35,3 +42,18 @@ export const StyledLink = styled(Link)`
     2px 4px 8px 0px rgba(0, 255, 255, 0.7),
     2px 4px 16px 0px rgba(0, 255, 255, 0.7);
 `;
+export const Layout = () => {
+  return (
+    <Container>
+      <header>
+        <Navigate>
+          <StyledNavLink to="/">Home</StyledNavLink>
+          <StyledNavLink to="/movies">Movies</StyledNavLink>
+        </Navigate>
+      </header>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
+    </Container>
+  );
+};

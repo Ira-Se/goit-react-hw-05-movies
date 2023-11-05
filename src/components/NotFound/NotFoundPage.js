@@ -1,6 +1,6 @@
 import { TextInfo, StyledLink } from 'components/Layout';
 
-export const NotFound = () => {
+export const NotFoundPage = ({ notFound }) => {
   return (
     <div>
       <TextInfo>Page not found!</TextInfo>
@@ -8,4 +8,4 @@ export const NotFound = () => {
     </div>
   );
 };
-export default NotFound;
+export default NotFoundPage;
